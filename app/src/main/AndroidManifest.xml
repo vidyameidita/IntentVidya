@@ -22,6 +22,8 @@
         </activity>
         <activity android:name=".BackActivity">
         </activity>
+        <activity android:name=".MoveForResultActivity">
+        </activity>
     </application>
 
 </manifest>

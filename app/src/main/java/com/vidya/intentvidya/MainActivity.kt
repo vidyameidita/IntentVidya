@@ -2,15 +2,19 @@ package com.vidya.intentvidya
 
 import android.app.PendingIntent.getActivity
 import android.content.Intent
+import android.net.Uri
 import android.support.v7.app.AppCompatActivity
 import android.os.Bundle
 import android.view.View
 import android.widget.Button
+import android.widget.TextView
 
 class MainActivity : AppCompatActivity(), View.OnClickListener {
     private lateinit var btnMoveActivity: Button
     private lateinit var btnMoveWithData: Button
-    private lateinit var btnBackActivity: Button
+    private lateinit var btnDialNumber: Button
+    private lateinit var btnResultFromActivity: Button
+    private lateinit var tvResult: TextView
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -22,13 +26,32 @@ class MainActivity : AppCompatActivity(), View.OnClickListener {
         btnMoveWithData = findViewById(R.id.btn_move_with_data)
         btnMoveWithData.setOnClickListener(this)
 
+        btnDialNumber = findViewById(R.id.btn_dial_number)
+        btnDialNumber.setOnClickListener(this)
+
+        btnResultFromActivity = findViewById(R.id.btn_result_from_activity)
+        btnResultFromActivity.setOnClickListener(this)
+
+        tvResult = findViewById(R.id.tv_result)
+        MakananReceived()
+
+
+
 //        btnBackActivity = findViewById(R.id.btn_back_activity)
 //        btnBackActivity.setOnClickListener()
 
 
     }
 
-     override  fun onClick(v:View?) {
+    private fun MakananReceived() {
+        val bundle = intent.extras
+        val makanan = bundle?.getString("Makanan")
+        tvResult.text = makanan
+    }
+
+
+
+    override  fun onClick(v:View?) {
         if (v !=null) {
             when (v.id) {
                 R.id.btn_move_activity -> run {
@@ -44,6 +67,15 @@ class MainActivity : AppCompatActivity(), View.OnClickListener {
                     intent.putExtras(bundle)
                     startActivity(intent)
 
+                }
+                R.id.btn_dial_number -> run {
+                    var dialNumber = "083848711039"
+                    val intent = Intent (Intent.ACTION_DIAL, Uri.parse("tel:" + dialNumber))
+                    startActivity(intent)
+                }
+                R.id.btn_result_from_activity -> run {
+                    val intent = Intent (this, MoveForResultActivity::class.java)
+                    startActivity(intent)
                 }
 
             }

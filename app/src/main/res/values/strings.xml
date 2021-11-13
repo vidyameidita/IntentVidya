@@ -11,6 +11,10 @@
     <string name="_yellow">KUNING</string>
     <string name="_red">MERAH</string>
     <string name="choose">PILIH</string>
+    <string name="choose_food">PILIH MAKANAN YANG ANDA SUKA</string>
+    <string name="_stik">STEAK N SHAKE</string>
+    <string name="_bakso">BAKSO</string>
+    <string name="__chicken">AYAM CRISPY</string>
     <string name="data_received">DATA DITERIMA</string>
     <string name="this_ismove_activity">INI PINDAH ACTIVITY</string>
 </resources>
